@@ -1,12 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
-	<h1>Hello World</h1>
-</body>
-</html>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
+<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+
+<t:layout>
+    <jsp:body>
+        <p>Hi I'm the heart of the message</p>
+    </jsp:body>
+</t:layout>
