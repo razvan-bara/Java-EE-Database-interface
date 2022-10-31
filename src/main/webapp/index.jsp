@@ -3,6 +3,11 @@
 
 <t:layout>
     <jsp:body>
-        <p>Hi I'm the heart of the message</p>
+        <ul>
+        	<li><a href="/test">Test</a></li>
+        	<li><a href="/test">Test</a></li>
+        	<li><a href="/test">Test</a></li>
+        	<li><a href="/test">Test</a></li>
+        </ul>
     </jsp:body>
 </t:layout>
