@@ -20,6 +20,10 @@ public class Student {
 		this.adresa = adresa;
 	}
 
+	public Student() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public long getId() {
 		return id;
 	}

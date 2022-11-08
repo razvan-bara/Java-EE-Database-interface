@@ -7,17 +7,29 @@ import models.Student;
 
 public class StudentService {
 
-	private StudentDAO studentService;
+	private StudentDAO studentDAO;
 	
 	public StudentService(){
-		studentService = new StudentDAO();
+		studentDAO = new StudentDAO();
 	}
 	
 	public ArrayList<Student> serveAllStudents(){
-		return studentService.getAllStudents();
+		return studentDAO.getAllStudents();
 	}
 	
 	public void processNewStudent(Student student) {
-		studentService.insertNewStudent(student);
+		studentDAO.insertNewStudent(student);
+	}
+	
+	public Student retriveStudent(long id) {
+		return studentDAO.getStudent(id);
+	}
+	
+	public void updateStudent(Student student) {
+		studentDAO.updateStudent(student);
+	}
+	
+	public void deleteStudent(long id) {
+		studentDAO.deleteStudent(id);
 	}
 }

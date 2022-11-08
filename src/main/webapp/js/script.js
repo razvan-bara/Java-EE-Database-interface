@@ -15,3 +15,13 @@ function closeModal(){
 		modal.classList.remove("active");
 	}
 }
+
+
+function remove_notifications() {
+	const notifications = document.querySelectorAll(".notification");	
+	notifications.forEach( function(val,index) {
+		val.classList.add("seen");
+	});
+}
+
+setTimeout(remove_notifications, 4000)

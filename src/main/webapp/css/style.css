@@ -18,16 +18,18 @@ input:focus{
 }
 
 header{
-	width: clamp(175px,12vw,220px);
+	width: clamp(180px,12vw,220px);
 	height: 100vh;
 	background: lightblue;
     position:absolute;
     top:0;    
     left:0;
+    z-index: 100;
+    text-align:center;
 }
 
 .container {
-	margin-left: clamp(175px,12vw,220px);
+	margin-left: clamp(180px,12vw,220px);
 	height: 100%;
 	display: flex;
 	justify-content: center;
@@ -108,4 +110,26 @@ table, th, td {
 .active{
 	visibility: visible;
 	opacity: 1;
+}
+
+.notification{
+	position:absolute;
+	top:0;
+	left:0;
+	width: 100%;
+	text-align: center;
+	color: white;
+	transition: opacity 0.7s ease;
+}
+
+.error {
+	background-color: red;
+}
+
+.success {
+	background-color: green;
+}
+
+.seen {
+	opacity: 0;
 }

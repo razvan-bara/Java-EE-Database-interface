@@ -4,10 +4,17 @@
 
 <t:layout>
     <jsp:body>
+    <div class="notification error">
+    	${ error }
+    </div>
+    <div class="notification success">
+    	<c:out value="${sessionScope.success}" />
+		<c:remove var="success" scope="session" />
+    </div>
     <div class="container flex-column">
     	<div class="table-heading">
 	    	<h2>Studenti</h2>
-			<button onClick="openModal()">Add student</button>    	
+			<a href="/studenti/new"><button>Add student</button></a>	
     	</div>
         <table class="table">
         	<thead>
@@ -25,34 +32,12 @@
 	        			<td>${ student.nume }</td>
 	        			<td>${ student.prenume }</td>
 	        			<td>${ student.adresa }</td>
-	        			<td>Edit</td>
-	        			<td>X</td>
+	        			<td><a href="/studenti/edit?id=${ student.id }">Edit</a></td>
+	        			<td><a href="/studenti/delete?id=${ student.id }">X</a></td>
 	        		</tr>
         		</c:forEach>
         	</tbody>
         </table>
-    </div>
-    <div class="modal">
-    	<div class="modal-container">
-    		<div class="modal-heading">
-    	    	<h3 class="">Add new student</h3>
-	    		<button onClick="closeModal()">X</button>
-    		</div>
-	    	<form class="modal-body" action="" method="POST">
-	    		<fieldset class="field-group">
-	   				<input type="text" name="nume" placeholder="Nume"/>
-	    		</fieldset>
-	    		<fieldset class="field-group">
-	   				<input type="text" name="prenume" placeholder="Prenume"/>
-	    		</fieldset>
-	 			<fieldset class="field-group">
-	   				<input type="text" name="adresa" placeholder="Adresa"/>
-	    		</fieldset>
-	    		<fieldset class="field-group">
-	    			<input type="submit" placeholder="Inregistreaza student"/>
-	    		</fieldset>
-	    	</form>
- 	    </div>
     </div>
     </jsp:body>
 </t:layout>

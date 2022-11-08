@@ -1,5 +1,5 @@
 <header>
-	<h1>PROIECT 3</h1>
+	<h1>PROIECT3</h1>
 	<ul>
 		<li><a href="/studenti">Studenti</a></li>
 		<li><a href="">Profesori</a></li>
