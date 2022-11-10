@@ -25,11 +25,11 @@ public class StudentService {
 		return studentDAO.getStudent(id);
 	}
 	
-	public void processStudentUpdate(Student student) {
+	public void updateStudent(Student student) {
 		studentDAO.updateStudent(student);
 	}
 	
-	public void processStudentDelete(long id) {
+	public void deleteStudent(long id) {
 		studentDAO.deleteStudent(id);
 	}
 }
