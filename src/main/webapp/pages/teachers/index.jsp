@@ -14,7 +14,7 @@
     <div class="container flex-column">
     	<div class="table-heading">
 	    	<h2>Profesori</h2>
-			<a href="/profesori/new"><button>Add teacher</button></a>	
+			<a href="/profesori/new"><button>Adauga profesor</button></a>	
     	</div>
         <table class="table">
         	<thead>
@@ -28,7 +28,7 @@
         	<tbody>
         		<c:forEach items="${ teachers }" var="teacher" varStatus="loop">
 	        		<tr>
-	        			<td>${ loop.index + 1 }</td>
+	        			<td class="font-weight-semiBold">${ loop.index + 1 }</td>
 	        			<td>${ teacher.nume }</td>
 	        			<td>${ teacher.prenume }</td>
 	        			<td>${ teacher.adresa }</td>
