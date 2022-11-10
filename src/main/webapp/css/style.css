@@ -6,6 +6,12 @@
 	--accent-color: #08090A;
 	--error-color: #A71D31;
 	font-family: 'Work Sans', sans-serif;
+	
+	--font-weight-semiBold: 500;
+}
+
+.font-weight-semiBold{
+	font-weight: var(--font-weight-semiBold);
 }
 
 * {
