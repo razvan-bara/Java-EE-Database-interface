@@ -32,8 +32,8 @@
 	        			<td>${ student.nume }</td>
 	        			<td>${ student.prenume }</td>
 	        			<td>${ student.adresa }</td>
-	        			<td><a href="/studenti/edit?id=${ student.id }">Edit</a></td>
-	        			<td><a href="/studenti/delete?id=${ student.id }">X</a></td>
+	        			<td class="action-cell"><a href="/studenti/edit?id=${ student.id }"><button class="btn action-btn edit-btn">Edit</button></a></td>
+	        			<td class="action-cell"><a href="/studenti/delete?id=${ student.id }"><button class="btn action-btn delete-btn">X</button></a></td>
 	        		</tr>
         		</c:forEach>
         	</tbody>
