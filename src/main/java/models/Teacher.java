@@ -20,6 +20,12 @@ public class Teacher {
 		this.adresa = adresa;
 	}
 
+	public Teacher(long id, String nume, String prenume) {
+		this.id = id;
+		this.nume = nume;
+		this.prenume = prenume;
+	}
+
 	public Teacher() {
 		
 	}
@@ -54,5 +60,14 @@ public class Teacher {
 
 	public void setAdresa(String adresa) {
 		this.adresa = adresa;
+	}
+	
+	public String getFullName() {
+		StringBuilder sb = new StringBuilder();
+		sb.append( nume );
+		sb.append(" ");
+		sb.append(prenume);
+		
+		return sb.toString();
 	}
 }
