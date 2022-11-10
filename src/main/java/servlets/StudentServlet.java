@@ -8,10 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import models.Student;
 import service.StudentService;
+import utils.SessionMessage;
 
 @WebServlet(urlPatterns = {"/studenti/*"})
 public class StudentServlet extends HttpServlet {
@@ -52,7 +52,7 @@ public class StudentServlet extends HttpServlet {
 
 		Student student = new Student(id,nume,prenume,adresa);
 		studentService.updateStudent(student);
-		setSuccessMsg(request, "Student editat cu succes");
+		SessionMessage.setSuccessMsg(request, "Student editat cu succes");
 		response.sendRedirect("/studenti");
 	}
 
@@ -68,7 +68,7 @@ public class StudentServlet extends HttpServlet {
 			
 			Student student = new Student(nume,prenume,adresa);
 			studentService.processNewStudent(student);
-			setSuccessMsg(request, "Student creeat cu succes");
+			SessionMessage.setSuccessMsg(request, "Student creeat cu succes");
 			response.sendRedirect("/studenti");
 		}
 
@@ -102,7 +102,7 @@ public class StudentServlet extends HttpServlet {
 		
 		long id = Long.parseLong( request.getParameter("id") );
 		studentService.deleteStudent(id);
-		setSuccessMsg(request, "Student sters cu succes");
+		SessionMessage.setSuccessMsg(request, "Student sters cu succes");
 		response.sendRedirect("/studenti");
 	}
 	
@@ -112,11 +112,6 @@ public class StudentServlet extends HttpServlet {
 		
 		request.setAttribute("students", students);
 		getServletContext().getRequestDispatcher("/pages/students/index.jsp").forward(request, response);
-	}
-	
-	protected static void setSuccessMsg(HttpServletRequest request, String msg) {
-		HttpSession session = request.getSession(false);
-		session.setAttribute("success", msg);
 	}
 
 }
