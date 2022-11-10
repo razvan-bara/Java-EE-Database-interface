@@ -10,10 +10,10 @@
     	    	
     	    	<c:choose>
 				    <c:when test="${student.id == null}">
-				        <h3 class="">Add new student</h3>
+				        <h3 class="">Adauga un student nou</h3>
 				    </c:when>
 				    <c:otherwise>
-				        <h3 class="">Edit existing student</h3>
+				        <h3 class="">Editeaza student</h3>
 				    </c:otherwise>
 				</c:choose>
     	    	
@@ -25,16 +25,16 @@
 					<input type="hidden" name="id" value="${ student.id }" />
 			    </c:if>
 	    		<fieldset class="field-group">
-	   				<input type="text" name="nume" placeholder="Nume" value="${ student.nume }"/>
+	   				<input type="text" name="nume" placeholder="Nume" value="${ student.nume }" pattern="[A-Za-z]+" required/>
 	    		</fieldset>
 	    		<fieldset class="field-group">
-	   				<input type="text" name="prenume" placeholder="Prenume" value="${ student.prenume }" />
+	   				<input type="text" name="prenume" placeholder="Prenume" value="${ student.prenume }" pattern="[A-Za-z]+" required />
 	    		</fieldset>
 	 			<fieldset class="field-group">
-	   				<input type="text" name="adresa" placeholder="Adresa" value="${ student.adresa }" />
+	   				<input type="text" name="adresa" placeholder="Adresa" value="${ student.adresa }" pattern="[A-Za-z]+" required />
 	    		</fieldset>
 	    		<fieldset class="field-group">
-	    			<input type="submit" placeholder="Inregistreaza student"/>
+	    			<input type="submit" value="Submit"/>
 	    		</fieldset>
 	    	</form>
  	    </div>
