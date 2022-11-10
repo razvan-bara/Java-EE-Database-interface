@@ -34,7 +34,7 @@ fieldset{
 	  margin: 0;
 }
 
-input:focus{
+*:focus{
 	outline: none
 }
 
@@ -192,16 +192,23 @@ table, th, td {
     transform: translate(-50%, -50%);
 }
 
+.select-label{
+	display: block;
+	margin-bottom: 0.3rem;
+}
+
 .field-group{
 	padding: 0.5rem 1rem;
 	display: block;
 }
 
-.field-group input {
+.field-group input,
+.field-group select {
 	width: 100%;
 	padding: 0.2rem;
 	border:none;
-	border-bottom: 1px solid #08090A;;
+	border-bottom: 1px solid #08090A;
+	font-size: 1rem;
 }
 
 .active{
