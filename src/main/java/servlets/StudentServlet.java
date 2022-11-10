@@ -42,34 +42,13 @@ public class StudentServlet extends HttpServlet {
 		}
 		
 	}
-	
-	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		Long id = Long.parseLong( request.getParameter("id") );
-		String nume = request.getParameter("nume");
-		String prenume = request.getParameter("prenume");
-		String adresa = request.getParameter("adresa");
-
-		Student student = new Student(id,nume,prenume,adresa);
-		studentService.updateStudent(student);
-		SessionMessage.setSuccessMsg(request, "Student editat cu succes");
-		response.sendRedirect("/studenti");
-	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		if( request.getParameter("_METHOD") != null &&  request.getParameter("_METHOD").equalsIgnoreCase("PUT") ) {
-			doPut(request, response);
+			submitEditStudentForm(request, response);
 		} else {
-
-			String nume = request.getParameter("nume");
-			String prenume = request.getParameter("prenume");
-			String adresa = request.getParameter("adresa");
-			
-			Student student = new Student(nume,prenume,adresa);
-			studentService.processNewStudent(student);
-			SessionMessage.setSuccessMsg(request, "Student creeat cu succes");
-			response.sendRedirect("/studenti");
+			submitNewStudentForm(request, response);
 		}
 
 	}
@@ -93,6 +72,31 @@ public class StudentServlet extends HttpServlet {
 		getServletContext().getRequestDispatcher("/pages/students/studentForm.jsp").forward(request, response);
 	}
 	
+	protected void submitNewStudentForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		String nume = request.getParameter("nume");
+		String prenume = request.getParameter("prenume");
+		String adresa = request.getParameter("adresa");
+
+		Student student = new Student(nume,prenume,adresa);
+		studentService.processNewStudent(student);
+		SessionMessage.setSuccessMsg(request, "Student creeat cu succes");
+		response.sendRedirect("/studenti");
+	}
+
+	protected void submitEditStudentForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		Long id = Long.parseLong( request.getParameter("id") );
+		String nume = request.getParameter("nume");
+		String prenume = request.getParameter("prenume");
+		String adresa = request.getParameter("adresa");
+
+		Student student = new Student(id,nume,prenume,adresa);
+		studentService.processStudentUpdate(student);
+		SessionMessage.setSuccessMsg(request, "Student editat cu succes");
+		response.sendRedirect("/studenti");
+	}
+	
 	protected void deleteStudent(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		if( request.getParameter("id") == null) {
@@ -101,7 +105,7 @@ public class StudentServlet extends HttpServlet {
 		}
 		
 		long id = Long.parseLong( request.getParameter("id") );
-		studentService.deleteStudent(id);
+		studentService.processStudentDelete(id);
 		SessionMessage.setSuccessMsg(request, "Student sters cu succes");
 		response.sendRedirect("/studenti");
 	}

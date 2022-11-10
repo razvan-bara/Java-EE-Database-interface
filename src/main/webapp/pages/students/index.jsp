@@ -28,7 +28,7 @@
         	<tbody>
         		<c:forEach items="${ students }" var="student" varStatus="loop">
 	        		<tr>
-	        			<td>${ loop.index + 1 }</td>
+	        			<td class="font-weight-semiBold">${ loop.index + 1 }</td>
 	        			<td>${ student.nume }</td>
 	        			<td>${ student.prenume }</td>
 	        			<td>${ student.adresa }</td>
