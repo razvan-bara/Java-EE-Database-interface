@@ -6,7 +6,7 @@
 			<li><a href="/profesori">Profesori</a></li>
 			<li><a href="">Materii</a></li>
 			<li><a href="">Cursuri</a></li>
-			<li><a href="">Catedra</a></li>
+			<li><a href="/catedre">Catedra</a></li>
 		</ul>
 	</nav>
 	<span class="profile-link">
