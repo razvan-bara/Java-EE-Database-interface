@@ -4,7 +4,7 @@
 		<ul class="main-nav">
 			<li><a href="/studenti">Studenti</a></li>
 			<li><a href="/profesori">Profesori</a></li>
-			<li><a href="/functii">Functii</a></li>
+			<li><a href="/functii">Profesor_catedra</a></li>
 			<li><a href="">Cursuri</a></li>
 			<li><a href="/catedre">Catedra</a></li>
 		</ul>
