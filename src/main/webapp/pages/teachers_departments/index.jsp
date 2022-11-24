@@ -14,7 +14,7 @@
     <div class="container flex-column">
     	<div class="table-heading">
 	    	<h2>Pozitia profesorului in cadrul catedrei</h2>
-			<a href="/functii/new"><button>Adauga relatie profesor-catedra</button></a>	
+			<a href="/functii/new"><button class="btn submit-btn submit-btn-new" >Adauga relatie profesor-catedra</button></a>	
     	</div>
         <table class="table">
         	<thead>

@@ -14,9 +14,9 @@
     <div class="container flex-column">
     	<div class="table-heading">
 	    	<h2>Profesori</h2>
-			<a href="/profesori/new"><button>Adauga profesor</button></a>	
+			<a href="/profesori/new"><button class="btn submit-btn submit-btn-new">Adauga profesor</button></a>	
     	</div>
-        <table class="table">
+        <table class="table shadow-depth">
         	<thead>
 	        	<tr>
 	        		<th>#</th>

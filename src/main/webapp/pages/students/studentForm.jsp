@@ -25,13 +25,13 @@
 					<input type="hidden" name="id" value="${ student.id }" />
 			    </c:if>
 	    		<fieldset class="field-group">
-	   				<input type="text" name="nume" placeholder="Nume" value="${ student.nume }" pattern="[A-Za-z]+" required/>
+	   				<input class="normal-color" type="text" name="nume" placeholder="Nume" value="${ student.nume }" pattern="[A-Za-z]+" required/>
 	    		</fieldset>
 	    		<fieldset class="field-group">
-	   				<input type="text" name="prenume" placeholder="Prenume" value="${ student.prenume }" pattern="[A-Za-z]+" required />
+	   				<input class="normal-color" type="text" name="prenume" placeholder="Prenume" value="${ student.prenume }" pattern="[A-Za-z]+" required />
 	    		</fieldset>
 	 			<fieldset class="field-group">
-	   				<input type="text" name="adresa" placeholder="Adresa" value="${ student.adresa }" pattern="[A-Za-z]+" required />
+	   				<input class="normal-color" type="text" name="adresa" placeholder="Adresa" value="${ student.adresa }" pattern="[A-Za-z]+" required />
 	    		</fieldset>
 	    		<fieldset class="field-group">
 	    			<button class="btn submit-btn submit-btn-crud" type="submit">Submit</button>

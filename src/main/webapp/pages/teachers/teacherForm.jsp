@@ -5,7 +5,7 @@
 <t:layout>
     <jsp:body>
     <div class="modal active">
-    	<div class="modal-container">
+    	<div class="modal-container basic-radius inverse">
     		<div class="modal-heading">
     	    	
     	    	<c:choose>
@@ -25,16 +25,16 @@
 					<input type="hidden" name="id" value="${ teacher.id }" />
 			    </c:if>
 	    		<fieldset class="field-group">
-	   				<input type="text" name="nume" placeholder="Nume" value="${ teacher.nume }" pattern="[A-Za-z]+" required/>
+	   				<input class="normal-color" type="text" name="nume" placeholder="Nume" value="${ teacher.nume }" pattern="[A-Za-z]+" required/>
 	    		</fieldset>
 	    		<fieldset class="field-group">
-	   				<input type="text" name="prenume" placeholder="Prenume" value="${ teacher.prenume }" pattern="[A-Za-z]+" required />
+	   				<input  class="normal-color" type="text" name="prenume" placeholder="Prenume" value="${ teacher.prenume }" pattern="[A-Za-z]+" required />
 	    		</fieldset>
 	 			<fieldset class="field-group">
-	   				<input type="text" name="adresa" placeholder="Adresa" value="${ teacher.adresa }" pattern="[A-Za-z]+" required />
+	   				<input class="normal-color" type="text" name="adresa" placeholder="Adresa" value="${ teacher.adresa }" pattern="[A-Za-z]+" required />
 	    		</fieldset>
 	    		<fieldset class="field-group">
-	    			<input type="submit" value="Submit"/>
+	    			<button class="btn submit-btn submit-btn-crud" type="submit">Submit</button>
 	    		</fieldset>
 	    	</form>
  	    </div>

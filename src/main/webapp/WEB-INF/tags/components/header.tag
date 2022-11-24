@@ -10,6 +10,6 @@
 		</ul>
 	</nav>
 	<span class="profile-link">
-		PROFIL
+		LOGOUT
 	</span>
 </header>

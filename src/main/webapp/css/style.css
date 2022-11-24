@@ -161,8 +161,18 @@ table, th, td {
 }
 
 .submit-btn-auth:hover{
+	background: var(--secondary-color);
+	color: var(--primary-color);
+}
+
+.submit-btn-new{
+	color: var(--accent-color);
+	background: var(--primary-color);
+}
+
+.submit-btn-new:hover{
 	background: var(--accent-color);
-	color: var(--primary-color);;
+	color: var(--primary-color);
 }
 
 .submit-btn-crud{
@@ -244,10 +254,19 @@ table, th, td {
 	width: 100%;
 	padding: 0.2rem;
 	border:none;
-	border-bottom: 1px solid var(--accent-color);
+	border-bottom: 1px solid;
 	font-size: 1rem;
 	background: transparent;
+}
+
+.normal-color{
 	color: var(--accent-color);
+	border-color: var(--accent-color);
+}
+
+.inv-color{
+	color: var(--primary-color);
+	border-color: var(--primary-color);
 }
 
 ::placeholder {
@@ -286,7 +305,7 @@ table, th, td {
 .auth-header{
 	text-align: center;
 	width: 100%;
-	border-bottom: 3px solid var(--accent-color);
+	border-bottom: 3px solid var(--primary-color);
 	margin: 1rem 50%;
 }
 
@@ -297,7 +316,7 @@ table, th, td {
 
 .auth-container{
 	width: clamp(200px, 40%, 500px);
-	background: #74A4BC;
+	background: var(--secondary-color);
 }
 
 .auth-header > h1 {

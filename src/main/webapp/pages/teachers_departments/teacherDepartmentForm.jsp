@@ -5,7 +5,7 @@
 <t:layout>
     <jsp:body>
     <div class="modal active">
-    	<div class="modal-container">
+    	<div class="modal-container basic-radius inverse">
     		<div class="modal-heading">
     	    	
     	    	<c:choose>
@@ -59,7 +59,7 @@
 	   				</select>
 	    		</fieldset>
 	    		<fieldset class="field-group">
-	    			<input type="submit" value="Submit"/>
+	    			<button class="btn submit-btn submit-btn-crud" type="submit">Submit</button>
 	    		</fieldset>
 	    	</form>
  	    </div>

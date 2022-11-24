@@ -5,7 +5,7 @@
 <t:layout>
     <jsp:body>
     <div class="modal active">
-    	<div class="modal-container basic-form">
+    	<div class="modal-container basic-radius inverse">
     		<div class="modal-heading">
     	    	
     	    	<c:choose>
@@ -25,10 +25,10 @@
 					<input type="hidden" name="id" value="${ department.id }" />
 			    </c:if>
 	    		<fieldset class="field-group">
-	   				<input type="text" name="denumire" placeholder="Denumire" value="${ department.denumire }" pattern="[A-Za-z]+" required/>
+	   				<input class="normal-color" type="text" name="denumire" placeholder="Denumire" value="${ department.denumire }" pattern="[A-Za-z]+" required/>
 	    		</fieldset>
 	    		<fieldset class="field-group">
-	    			<input type="submit" value="Submit"/>
+	    			<button class="btn submit-btn submit-btn-crud" type="submit">Submit</button>
 	    		</fieldset>
 	    	</form>
  	    </div>
