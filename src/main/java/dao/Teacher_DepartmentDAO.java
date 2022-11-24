@@ -16,6 +16,8 @@ public class Teacher_DepartmentDAO extends DAO {
 	= "SELECT id_profesor, id_catedra, nume, prenume, denumire, pozitie FROM FUNCTII_PROFESOR_CATEDRA INNER JOIN PROFESORI USING(id_profesor) INNER JOIN CATEDRA USING(id_catedra)";
 	private String FIND_TEACHER_DEPARTMENT_BY_IDS
 	= "SELECT id_profesor, id_catedra, nume, prenume, denumire, pozitie FROM FUNCTII_PROFESOR_CATEDRA INNER JOIN PROFESORI USING(id_profesor) INNER JOIN CATEDRA USING(id_catedra) where id_profesor = ? AND id_catedra = ?";
+	private String INSERT_NEW_TEACHER_DEPARTMENT = "INSERT INTO functii_profesor_catedra VALUES(?,?,?)";
+	
 	public ArrayList<Teacher_Department> getAllTeachersDepartments() {
 		ArrayList<Teacher_Department> teachers_departments = new ArrayList<Teacher_Department>();
 		
@@ -93,6 +95,26 @@ public class Teacher_DepartmentDAO extends DAO {
 		}
 		
 		return teacher_department;
+	}
+
+	public void insertNewTeacher_Department(Long teacher_id, Long department_id, String position) {
+
+
+		try {
+			Connection conn = this.getConnection();
+			PreparedStatement statement = conn.prepareStatement(INSERT_NEW_TEACHER_DEPARTMENT);
+			
+			statement.setLong(1, teacher_id);
+			statement.setLong(2, department_id);
+			statement.setString(3, position);
+			int rows = statement.executeUpdate();
+			System.out.println(rows);
+			conn.close();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 }

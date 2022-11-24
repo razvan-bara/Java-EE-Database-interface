@@ -11,6 +11,7 @@ import models.Teacher;
 public class TeacherDAO extends DAO {
 
 	private String SELECT_ALL_TEACHERS = "SELECT * FROM PROFESORI ORDER BY id_profesor asc";
+	private String SELECT_ALL_TEACHERS_WHERE_NOT = "SELECT * FROM PROFESORI WHERE id_profesor <> ? ORDER BY id_profesor asc ";
 	private String INSERT_NEW_TEACHER= "INSERT INTO PROFESORI(nume,prenume,adresa) VALUES(?,?,?)";
 	private String FIND_TEACHER_BY_ID = "SELECT * FROM PROFESORI WHERE id_profesor = ?";
 	private String UPDATE_TEACHER = "UPDATE PROFESORI SET nume = ?, prenume = ?, adresa = ? WHERE id_profesor = ?";
@@ -109,6 +110,35 @@ public class TeacherDAO extends DAO {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	public ArrayList<Teacher> getAllTeachersExcept(long teacher_id) {
+		ArrayList<Teacher> teachers = new ArrayList<Teacher>();
+		
+		try {
+			Connection conn = this.getConnection();
+			PreparedStatement statement = conn.prepareStatement(SELECT_ALL_TEACHERS_WHERE_NOT);
+			statement.setLong(1, teacher_id);
+			ResultSet rs = statement.executeQuery();
+			
+			while(rs.next()) {
+				
+				teachers.add(new Teacher(
+					rs.getLong("id_profesor"),
+					rs.getString("nume"),
+					rs.getString("prenume"),
+					rs.getString("adresa")
+					)
+				);
+				
+			}
+			
+			conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return teachers;
 	}
 
 	

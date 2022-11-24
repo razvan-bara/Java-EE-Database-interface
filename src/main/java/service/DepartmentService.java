@@ -32,5 +32,9 @@ public class DepartmentService {
 	public void processDepartmentDelete(long id) {
 		departmentDAO.deleteDepartment(id);
 	}
+
+	public ArrayList<Department> serveAllDepartmentsExcept(long department_id) {
+		return departmentDAO.serveAllDepartmentsExcept(department_id);
+	}
 	
 }

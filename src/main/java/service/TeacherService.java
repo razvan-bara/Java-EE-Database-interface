@@ -34,4 +34,8 @@ public class TeacherService {
 		teacherDAO.deleteTeacher(id);
 	}
 
+	public ArrayList<Teacher> serveAllTeachersExcept(long teacher_id) {
+		return teacherDAO.getAllTeachersExcept(teacher_id);
+	}
+
 }

@@ -23,4 +23,9 @@ public class Teacher_DepartmentService {
 		Teacher_Department existing_teacher_department = teacher_departmentDAO.getTeacher_Department(teacher_id, department_id);
 		return existing_teacher_department;
 	}
+
+	public void processNewTeacher_Department(Long teacher_id, Long department_id, String position) {
+		teacher_departmentDAO.insertNewTeacher_Department(teacher_id, department_id, position);
+		
+	}
 }

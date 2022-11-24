@@ -9,18 +9,50 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import models.Department;
+import models.Student;
+import models.Teacher;
 import models.Teacher_Department;
 import models.Teacher_Department;
+import service.DepartmentService;
+import service.TeacherService;
 import service.Teacher_DepartmentService;
+import utils.SessionMessage;
 
 @WebServlet("/functii/*")
 public class Teacher_DepartmentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-	Teacher_DepartmentService teacher_departmentService;
+	private Teacher_DepartmentService teacher_departmentService;
+	private TeacherService teacherService;
+	private DepartmentService departmentService;
+	private ArrayList<String> positions = new ArrayList<String>();
 	
     public Teacher_DepartmentServlet() {
+    	
     	teacher_departmentService = new Teacher_DepartmentService();
+    	teacherService = new TeacherService();
+    	departmentService = new DepartmentService();
+    	
+    	positions.add("Sef");
+    	positions.add("Editor");
+    	positions.add("Ceva");
+    	positions.add("Prodecan");
+    }
+    
+    private ArrayList<String> filterCurrentPosition(String position){
+    	
+    	ArrayList<String> filtered_positions = new ArrayList<String>();
+    	
+    	for (String pos : positions){
+    		
+    		if( !pos.equalsIgnoreCase(position) ) {
+    			filtered_positions.add(pos);
+    		}
+    		
+    	}
+    	
+		return filtered_positions;
     }
 
 
@@ -44,11 +76,39 @@ public class Teacher_DepartmentServlet extends HttpServlet {
 		
 	}
 
+	protected void submitNewTeacher_DepartmentForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		Long teacher_id = Long.parseLong( request.getParameter("teacher") );
+		Long department_id = Long.parseLong( request.getParameter("department") );
+		String position = request.getParameter("position");
+
+		System.out.println(teacher_id);
+		System.out.println(department_id);
+		System.out.println(position);
+		
+		teacher_departmentService.processNewTeacher_Department(teacher_id, department_id, position);
+		SessionMessage.setSuccessMsg(request, "Profesor adaugat la catedra cu succes");
+		response.sendRedirect("/functii");
+	}
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		
+		if( request.getParameter("_METHOD") != null &&  request.getParameter("_METHOD").equalsIgnoreCase("PUT") ) {
+//			submitEditTeacher_DepartmentForm(request, response);
+		} else {
+			submitNewTeacher_DepartmentForm(request, response);
+		}
 	}
 
 	protected void showNewTeacher_DepartmentForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		ArrayList<Teacher> teachers = teacherService.serveAllTeachers();
+		ArrayList<Department> departments = departmentService.serveAllDepartments();
+		
+		
+		request.setAttribute("teachers", teachers);
+		request.setAttribute("departments", departments);
+		
 		getServletContext().getRequestDispatcher("/pages/teachers_departments/teacherDepartmentForm.jsp").forward(request, response);
 	}
 	
@@ -63,8 +123,16 @@ public class Teacher_DepartmentServlet extends HttpServlet {
 		
 		long teacher_id = Long.parseLong( request.getParameter("teacher_id") );
 		long department_id = Long.parseLong( request.getParameter("department_id") );
+		
 		Teacher_Department existing_teacher_department = teacher_departmentService.retriveTeacher_Department(teacher_id, department_id);
 		
+		ArrayList<Teacher> teachers = teacherService.serveAllTeachersExcept(teacher_id);
+		ArrayList<Department> departments = departmentService.serveAllDepartmentsExcept(department_id);
+		ArrayList<String> filtered_positions = filterCurrentPosition( existing_teacher_department.getPosition() );
+		
+		request.setAttribute("teachers", teachers);
+		request.setAttribute("departments", departments);
+		request.setAttribute("positions", filtered_positions);
 		request.setAttribute("teacher_department", existing_teacher_department);
 		getServletContext().getRequestDispatcher("/pages/teachers_departments/teacherDepartmentForm.jsp").forward(request, response);
 	}
