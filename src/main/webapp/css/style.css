@@ -38,6 +38,16 @@ fieldset{
 	outline: none
 }
 
+.center{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.flex-column{
+	flex-direction: column;
+}
+
 header{
 	width: clamp(170px,11vw,220px);
 	height: 100vh;
@@ -53,7 +63,7 @@ header{
 }
 
 .main-header-title {
-	font-size: 2.1rem;
+	font-size: 1.8rem;
 }
 
 .main-nav {
@@ -93,10 +103,6 @@ header{
 	align-items: center;
 }
 
-.flex-column {
-	flex-direction:column;
-}
-
 .table-heading,
 .modal-heading{
 	width: 100%;
@@ -123,8 +129,10 @@ table, th, td {
 
 .table{
 	border: 1px solid var(--accent-color);
-	box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
 
+.shadow-depth{
+	box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
 
 .action-cell {
@@ -139,6 +147,32 @@ table, th, td {
 
 .btn:hover{
 	cursor:pointer;
+}
+
+.submit-btn{
+	width: 100%;
+	border-radius: 5px;
+	transition: background 0.3s ease, color 0.3s ease;
+}
+
+.submit-btn-auth{
+	color: var(--accent-color);
+	background: var(--primary-color);
+}
+
+.submit-btn-auth:hover{
+	background: var(--accent-color);
+	color: var(--primary-color);;
+}
+
+.submit-btn-crud{
+	background: var(--accent-color);
+	color: var(--primary-color);
+}
+
+.submit-btn-crud:hover{
+	color: var(--accent-color);
+	background: var(--primary-color);
 }
 
 .action-btn{
@@ -157,6 +191,7 @@ table, th, td {
 	background: var(--secondary-color);
 	color: var(--primary-color);
 }
+
 
 .delete-btn{
 	border: 2px solid var(--error-color);
@@ -202,13 +237,30 @@ table, th, td {
 	display: block;
 }
 
-.field-group input,
+.field-group input[type="text"],
+.field-group input[type="email"],
+.field-group input[type="password"],
 .field-group select {
 	width: 100%;
 	padding: 0.2rem;
 	border:none;
-	border-bottom: 1px solid #08090A;
+	border-bottom: 1px solid var(--accent-color);
 	font-size: 1rem;
+	background: transparent;
+	color: var(--accent-color);
+}
+
+::placeholder {
+	color: inherit;
+}
+
+.field-group input[type="submit"]{
+	width: 100%;
+	padding: 0.2rem;
+	border:none;
+	border-bottom: 1px solid var(--primary-color);
+	font-size: 1rem;
+	background: var(--primary-color);
 }
 
 .active{
@@ -224,6 +276,33 @@ table, th, td {
 	text-align: center;
 	color: var(--primary-color);
 	transition: opacity 0.7s ease;
+}
+
+.auth-wrapper{
+	width: 100%;
+	height: 100vh;
+}
+
+.auth-header{
+	text-align: center;
+	width: 100%;
+	border-bottom: 3px solid var(--accent-color);
+	margin: 1rem 50%;
+}
+
+.basic-radius{
+	border: 1px solid var(--accent-color);
+	border-radius: 12px;
+}
+
+.auth-container{
+	width: clamp(200px, 40%, 500px);
+	background: #74A4BC;
+}
+
+.auth-header > h1 {
+	margin: 0;
+	margin: 1rem 0;
 }
 
 .error {

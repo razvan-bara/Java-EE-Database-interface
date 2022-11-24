@@ -16,7 +16,7 @@
 	    	<h2>Catedre</h2>
 			<a href="/catedre/new"><button>Adauga catedra</button></a>	
     	</div>
-        <table class="table">
+        <table class="table shadow-depth">
         	<thead>
 	        	<tr>
 	        		<th>#</th>

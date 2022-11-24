@@ -5,7 +5,7 @@
 <t:layout>
     <jsp:body>
     <div class="modal active">
-    	<div class="modal-container">
+    	<div class="modal-container basic-form">
     		<div class="modal-heading">
     	    	
     	    	<c:choose>
