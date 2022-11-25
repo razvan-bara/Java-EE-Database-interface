@@ -72,7 +72,7 @@ public class ResearchProjectServlet extends HttpServlet {
 		String error_msg = researchProjectService.processNewResearchProject(teacher_id, student_id, title);
 		
 		if(error_msg.isBlank()) {
-			SessionMessage.setSuccessMsg(request, "Profesor adaugat la catedra cu succes");
+			SessionMessage.setSuccessMsg(request, "Proiect de cercetare adaugat");
 		} else {
 			SessionMessage.setErrorMsg(request, error_msg);
 		}
@@ -111,7 +111,7 @@ public class ResearchProjectServlet extends HttpServlet {
 		String error_msg = researchProjectService.processResearchProjectUpdate(existing_researchProject, researchProject);
 		
 		if(error_msg.isBlank()) {
-			SessionMessage.setSuccessMsg(request, "Profesor adaugat la catedra cu succes");
+			SessionMessage.setSuccessMsg(request, "Proiect de cercetare modificat");
 		} else {
 			SessionMessage.setErrorMsg(request, error_msg);
 		}
