@@ -18,6 +18,11 @@ public class Teacher_Department {
 		this.department = new Department(department_id);
 		this.position = position;
 	}
+	
+	public Teacher_Department(long teacher_id, long department_id) {
+		this.teacher = new Teacher(teacher_id);
+		this.department = new Department(department_id);
+	}
 
 
 	public Teacher_Department() {

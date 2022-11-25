@@ -123,7 +123,7 @@ public class Teacher_DepartmentServlet extends HttpServlet {
 		Long department_id = Long.parseLong( request.getParameter("department") );
 		String position = request.getParameter("position");
 		
-		Teacher_Department existing_teacher_department = new Teacher_Department(existing_teacher_id, existing_department_id, existing_position);
+		Teacher_Department existing_teacher_department = new Teacher_Department(existing_teacher_id, existing_department_id);
 		Teacher_Department teacher_department = new Teacher_Department(teacher_id, department_id, position);
 		
 		String error_msg = teacher_departmentService.processTeacher_DepartmentUpdate(existing_teacher_department, teacher_department);
