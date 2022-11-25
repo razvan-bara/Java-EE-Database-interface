@@ -105,7 +105,7 @@ public class ResearchProjectServlet extends HttpServlet {
 		Long student_id = Long.parseLong( request.getParameter("student") );
 		String title = request.getParameter("titlu");
 		
-		ResearchProject existing_researchProject = new ResearchProject(existing_teacher_id, existing_student_id,title);
+		ResearchProject existing_researchProject = new ResearchProject(existing_teacher_id, existing_student_id);
 		ResearchProject researchProject = new ResearchProject(teacher_id, student_id, title);
 		
 		String error_msg = researchProjectService.processResearchProjectUpdate(existing_researchProject, researchProject);

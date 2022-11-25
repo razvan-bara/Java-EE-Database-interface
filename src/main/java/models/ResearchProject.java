@@ -18,6 +18,11 @@ public class ResearchProject {
 		this.student = new Student(student_id);
 		this.title = title;
 	}
+	
+	public ResearchProject(long teacher_id, long student_id) {
+		this.teacher = new Teacher(teacher_id);
+		this.student = new Student(student_id);
+	}
 
 
 	public ResearchProject() {
