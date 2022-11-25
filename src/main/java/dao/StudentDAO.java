@@ -8,6 +8,7 @@ import models.Student;
 public class StudentDAO extends DAO {
 	
 	private String SELECT_ALL_STUDENTS = "SELECT * FROM STUDENTI ORDER BY id_student asc";
+	private String SELECT_ALL_STUDENTS_WHERE_NOT = "SELECT * FROM STUDENTI WHERE id_student <> ? ORDER BY id_student asc ";
 	private String INSERT_NEW_STUDENT= "INSERT INTO STUDENTI(nume,prenume,adresa) VALUES(?,?,?)";
 	private String FIND_STUDENT_BY_ID = "SELECT * FROM STUDENTI WHERE id_student = ?";
 	private String UPDATE_STUDENT = "UPDATE STUDENTI SET nume = ?, prenume = ?, adresa = ? WHERE id_student = ?";
@@ -107,5 +108,34 @@ public class StudentDAO extends DAO {
 			e.printStackTrace();
 		}
 	}
+
+	public ArrayList<Student> getAllStudentsExcept(long student_id) {
+			ArrayList<Student> students = new ArrayList<Student>();
+			
+			try {
+				Connection conn = this.getConnection();
+				PreparedStatement statement = conn.prepareStatement(SELECT_ALL_STUDENTS_WHERE_NOT);
+				statement.setLong(1, student_id);
+				ResultSet rs = statement.executeQuery();
+				
+				while(rs.next()) {
+					
+					students.add(new Student(
+						rs.getLong("id_student"),
+						rs.getString("nume"),
+						rs.getString("prenume"),
+						rs.getString("adresa")
+						)
+					);
+					
+				}
+				
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+			return students;
+		}
 	
 }

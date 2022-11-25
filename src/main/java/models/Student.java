@@ -19,6 +19,16 @@ public class Student {
 		this.prenume = prenume;
 		this.adresa = adresa;
 	}
+	
+	public Student(long id, String nume, String prenume) {
+		this.id = id;
+		this.nume = nume;
+		this.prenume = prenume;
+	}
+
+	public Student(long id) {
+		this.id = id;
+	}
 
 	public Student() {
 		// TODO Auto-generated constructor stub
@@ -54,5 +64,14 @@ public class Student {
 
 	public void setAdresa(String adresa) {
 		this.adresa = adresa;
+	}
+	
+	public String getFullName() {
+		StringBuilder sb = new StringBuilder();
+		sb.append( nume );
+		sb.append(" ");
+		sb.append(prenume);
+		
+		return sb.toString();
 	}
 }

@@ -32,4 +32,8 @@ public class StudentService {
 	public void processStudentDelete(long id) {
 		studentDAO.deleteStudent(id);
 	}
+
+	public ArrayList<Student> serveAllStudentsExcept(long student_id) {
+		return studentDAO.getAllStudentsExcept(student_id);
+	}
 }
