@@ -69,8 +69,8 @@ public class Teacher_DepartmentServlet extends HttpServlet {
 							break;
 			case "edit": 	showEditTeacher_DepartmentForm(request, response);
 							break;
-//			case "delete":  deleteTeacher_Department(request, response);
-//							break;
+			case "delete":  deleteTeacher_Department(request, response);
+							break;
 			default: listTeacher_Departments(request,response);
 		}
 		
@@ -86,15 +86,62 @@ public class Teacher_DepartmentServlet extends HttpServlet {
 		System.out.println(department_id);
 		System.out.println(position);
 		
-		teacher_departmentService.processNewTeacher_Department(teacher_id, department_id, position);
-		SessionMessage.setSuccessMsg(request, "Profesor adaugat la catedra cu succes");
+		String error_msg = teacher_departmentService.processNewTeacher_Department(teacher_id, department_id, position);
+		
+		if(error_msg.isBlank()) {
+			SessionMessage.setSuccessMsg(request, "Profesor adaugat la catedra cu succes");
+		} else {
+			SessionMessage.setErrorMsg(request, error_msg);
+		}
+		
 		response.sendRedirect("/functii");
 	}
+	
+	protected void deleteTeacher_Department(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		if( request.getParameter("teacher_id") == null || request.getParameter("department_id") == null ) {
+			request.setAttribute("error", "ID-ul nu a fost specificat");
+			listTeacher_Departments(request,response);
+		}
+		
+		long teacher_id = Long.parseLong( request.getParameter("teacher_id") );
+		long department_id = Long.parseLong( request.getParameter("department_id") );
+		
+		teacher_departmentService.processTeacher_DepartmentDelete(teacher_id, department_id);
+		SessionMessage.setSuccessMsg(request, "Relatie profesor-catedra stearsa");
+		
+		response.sendRedirect("/functii");
+	}
+	
+	protected void submitEditTeacher_DepartmentForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		Long existing_teacher_id = Long.parseLong( request.getParameter("existing_teacher_id") );
+		Long existing_department_id = Long.parseLong( request.getParameter("existing_department_id") );
+		String existing_position = request.getParameter("existing_position");
+		
+		Long teacher_id = Long.parseLong( request.getParameter("teacher") );
+		Long department_id = Long.parseLong( request.getParameter("department") );
+		String position = request.getParameter("position");
+		
+		Teacher_Department existing_teacher_department = new Teacher_Department(existing_teacher_id, existing_department_id, existing_position);
+		Teacher_Department teacher_department = new Teacher_Department(teacher_id, department_id, position);
+		
+		String error_msg = teacher_departmentService.processTeacher_DepartmentUpdate(existing_teacher_department, teacher_department);
+		
+		if(error_msg.isBlank()) {
+			SessionMessage.setSuccessMsg(request, "Profesor adaugat la catedra cu succes");
+		} else {
+			SessionMessage.setErrorMsg(request, error_msg);
+		}
+		
+		response.sendRedirect("/functii");
+	}
+	
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		if( request.getParameter("_METHOD") != null &&  request.getParameter("_METHOD").equalsIgnoreCase("PUT") ) {
-//			submitEditTeacher_DepartmentForm(request, response);
+			submitEditTeacher_DepartmentForm(request, response);
 		} else {
 			submitNewTeacher_DepartmentForm(request, response);
 		}
@@ -108,6 +155,7 @@ public class Teacher_DepartmentServlet extends HttpServlet {
 		
 		request.setAttribute("teachers", teachers);
 		request.setAttribute("departments", departments);
+		request.setAttribute("positions", positions);
 		
 		getServletContext().getRequestDispatcher("/pages/teachers_departments/teacherDepartmentForm.jsp").forward(request, response);
 	}

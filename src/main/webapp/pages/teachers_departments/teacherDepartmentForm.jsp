@@ -22,8 +22,9 @@
 		    <form class="modal-body" action="/functii" method="POST">
 			    <c:if test="${teacher_department.teacher.id != null && teacher_department.department.id != null}">
 					<input type="hidden" name="_METHOD" value="PUT">
-					<input type="hidden" name="teacher_id" value="${ teacher_department.teacher.id }" />
-					<input type="hidden" name="department_id" value="${ teacher_department.department.id }" />
+					<input type="hidden" name="existing_teacher_id" value="${ teacher_department.teacher.id }" />
+					<input type="hidden" name="existing_department_id" value="${ teacher_department.department.id }" />
+					<input type="hidden" name="existing_position" value="${ teacher_department.position }" />
 			    </c:if>
 	    		<fieldset class="field-group">
 	    			<label class="select-label">Nume complet</label>

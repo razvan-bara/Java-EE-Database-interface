@@ -7,6 +7,10 @@
     <div class="notification error">
     	${ error }
     </div>
+    <div class="notification error">
+    	<c:out value="${sessionScope.error}" />
+		<c:remove var="error" scope="session" />
+    </div>
     <div class="notification success">
     	<c:out value="${sessionScope.success}" />
 		<c:remove var="success" scope="session" />

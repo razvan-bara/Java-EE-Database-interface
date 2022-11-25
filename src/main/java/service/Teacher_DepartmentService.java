@@ -24,8 +24,17 @@ public class Teacher_DepartmentService {
 		return existing_teacher_department;
 	}
 
-	public void processNewTeacher_Department(Long teacher_id, Long department_id, String position) {
-		teacher_departmentDAO.insertNewTeacher_Department(teacher_id, department_id, position);
-		
+	public String processNewTeacher_Department(Long teacher_id, Long department_id, String position) {
+		String error_msg = teacher_departmentDAO.insertNewTeacher_Department(teacher_id, department_id, position);
+		return error_msg;
+	}
+
+	public String processTeacher_DepartmentUpdate(Teacher_Department existing_teacher_department, Teacher_Department teacher_department) {
+		String error_msg = teacher_departmentDAO.updateTeacher_Department(existing_teacher_department, teacher_department);
+		return error_msg;
+	}
+	
+	public void processTeacher_DepartmentDelete(long teacher_id, long department_id) {
+		teacher_departmentDAO.deleteTeacher_Department(teacher_id, department_id);
 	}
 }

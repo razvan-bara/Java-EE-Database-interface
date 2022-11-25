@@ -26,6 +26,11 @@ public class Teacher {
 		this.prenume = prenume;
 	}
 
+	public Teacher(long id) {
+		super();
+		this.id = id;
+	}
+
 	public Teacher() {
 		
 	}

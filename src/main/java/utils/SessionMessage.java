@@ -10,4 +10,9 @@ public class SessionMessage {
 		session.setAttribute("success", msg);
 	}
 	
+	public static void setErrorMsg(HttpServletRequest request, String msg) {
+		HttpSession session = request.getSession(false);
+		session.setAttribute("error", msg);
+	}
+	
 }

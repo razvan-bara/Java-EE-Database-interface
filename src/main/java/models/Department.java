@@ -13,6 +13,10 @@ public class Department {
 	public Department(String denumire) {
 		this.denumire = denumire;
 	}
+	
+	public Department(long id) {
+		this.id = id;
+	}
 
 	public Department() {
 	}
