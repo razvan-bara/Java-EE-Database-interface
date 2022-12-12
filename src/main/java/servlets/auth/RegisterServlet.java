@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import models.User;
 import service.AuthService;
+import utils.AuthSessionHandler;
+import utils.Hash;
+import utils.SessionMessage;
 
 @WebServlet("/register")
 public class RegisterServlet extends HttpServlet {
@@ -22,7 +25,6 @@ public class RegisterServlet extends HttpServlet {
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		getServletContext().getRequestDispatcher(PATH_TO_REGISTER_PAGE).forward(request, response);
 	}
 
@@ -32,11 +34,30 @@ public class RegisterServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		String confirm_password = request.getParameter("confirm_password");
+		String rol = "client";
 		
-		User user = new User(full_name, email, password);
-		authService.registerUser(user);
+		if( !password.equals(confirm_password) ) {
+			
+			request.setAttribute("error", "Parolele nu corespund");
+			request.getRequestDispatcher(PATH_TO_REGISTER_PAGE).forward(request, response);
+			return;
+		}
 		
-		System.out.println("ceva");
+		User user = new User(full_name, email, password, rol);
+		String error_msg = authService.registerUser(user);
+		
+		String redirectTo = "";
+		
+		if(error_msg.isBlank()) {
+			SessionMessage.setSuccessMsg(request, "Cont creat cu succes");
+			AuthSessionHandler.setSessionUser(request, user);
+			redirectTo = "/";
+		} else {
+			SessionMessage.setErrorMsg(request, error_msg);
+			 redirectTo = "/register";
+		}
+		
+		response.sendRedirect(redirectTo);
 	}
 
 }

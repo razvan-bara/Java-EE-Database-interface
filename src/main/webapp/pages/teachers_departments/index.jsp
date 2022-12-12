@@ -4,17 +4,6 @@
 
 <t:layout>
     <jsp:body>
-    <div class="notification error">
-    	${ error }
-    </div>
-    <div class="notification error">
-    	<c:out value="${sessionScope.error}" />
-		<c:remove var="error" scope="session" />
-    </div>
-    <div class="notification success">
-    	<c:out value="${sessionScope.success}" />
-		<c:remove var="success" scope="session" />
-    </div>
     <div class="container flex-column">
     	<div class="table-heading">
 	    	<h2>Pozitia profesorului in cadrul catedrei</h2>
@@ -43,11 +32,13 @@
 			        			<button class="btn action-btn edit-btn">Edit</button>
 		        			</a>
 	        			</td>
+	        			<c:if test='${ auth_user.rol == "admin" }'>
 	        			<td class="action-cell">
 		        			<a href="/functii/delete?teacher_id=${ teacher_department.teacher.id }&department_id=${teacher_department.department.id}">
 			        			<button class="btn action-btn delete-btn">X</button>
 		        			</a>
 	        			</td>
+	        			</c:if>
 	        		</tr>
         		</c:forEach>
         	</tbody>

@@ -20,7 +20,7 @@
     		</div>
     	    
 		    <form class="modal-body" action="/catedre" method="POST">
-			    <c:if test="${student.id != null}">
+			    <c:if test="${department.id != null}">
 					<input type="hidden" name="_METHOD" value="PUT">
 					<input type="hidden" name="id" value="${ department.id }" />
 			    </c:if>

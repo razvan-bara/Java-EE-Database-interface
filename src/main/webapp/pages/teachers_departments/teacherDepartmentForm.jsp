@@ -66,7 +66,7 @@
 					   </c:choose>
 	   				</select>
 	    		</fieldset>
-	    		<fieldset class="field-group">
+				<fieldset class="field-group">
 	    			<label class="select-label">Pozitie</label>
 	   				<select name="position">
 	   					<c:choose>

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,10 +14,22 @@
 	defer></script>
 </head>
 <body>
+    <div class="notification error">
+    	<c:out value="${sessionScope.error}" />
+		<c:remove var="error" scope="session" />
+    </div>
+    <div class="notification error">
+    	${ error }
+    </div>
+    <div class="notification success">
+    	<c:out value="${sessionScope.success}" />
+		<c:remove var="success" scope="session" />
+    </div>
 	<div class="auth-wrapper center inv-color">
 		<div class="auth-container center flex-column shadow-depth normal-colors basic-radius">
 			<div class="auth-header">
 				<h1>Inregistreaza-te</h1>
+				<h5>Deja ai cont? Fa-ti login-ul <a class="expanding-link" href="/login">aici</a></h5>
 			</div>
 			<form class="auth-form" action="/register" method="POST" >
 				<fieldset class="field-group" >
@@ -31,7 +45,7 @@
 					<input class="inv-color" type="password" name="confirm_password" placeholder="Confirmare parola" required />
 				</fieldset>
 				<fieldset class="field-group ">
-					<button class="btn submit-btn submit-btn-auth" type="submit" >Submit</button>
+					<button class="btn submit-btn submit-btn-new" type="submit" >Submit</button>
 				</fieldset>
 			</form>
 		</div>

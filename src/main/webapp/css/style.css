@@ -66,6 +66,10 @@ header{
 	font-size: 1.8rem;
 }
 
+.main-header-title a {
+	color: var(--primary-color);
+}
+
 .main-nav {
 	list-style: none;
 	display: flex;
@@ -87,9 +91,20 @@ header{
 }
 
 .profile-link{
+	margin-top: auto;
+}
+
+span input[type="submit"]{
+	border: 0;
+	color: var(--primary-color);
+	background: transparent;
 	font-size: 1.2rem;
 	margin-top: auto;
-	padding: 1rem 0;
+	padding: 1rem 0;	
+}
+
+input[type="submit"]:hover{
+	cursor: pointer;
 }
 
 
@@ -334,4 +349,13 @@ table, th, td {
 
 .seen {
 	opacity: 0;
+}
+
+.expanding-link{
+	position:relative;
+	transition: color 0.2s ease-out;
+}
+
+.expanding-link:hover{
+	color: var(--primary-color);
 }

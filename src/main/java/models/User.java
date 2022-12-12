@@ -6,24 +6,40 @@ public class User {
 	private String nume_complet;
 	private String email;
 	private String parola;
-	private int id_rol;
+	private String rol;
 	
-	public User(long id_utilizator, String nume_complet, String email, String parola, int id_rol) {
+	public User() {
+		
+	};
+	
+	public User(long id_utilizator, String nume_complet, String email, String parola, String rol) {
 		super();
 		this.id_utilizator = id_utilizator;
 		this.nume_complet = nume_complet;
 		this.email = email;
 		this.parola = parola;
-		this.id_rol = id_rol;
+		this.rol = rol;
 	}
+	
+	
 
-	public User(String nume_complet, String email, String parola, int id_rol) {
+	public User(String nume_complet, String email, String parola, String rol) {
 		super();
 		this.nume_complet = nume_complet;
 		this.email = email;
 		this.parola = parola;
-		this.id_rol = id_rol;
+		this.rol = rol;
 	}
+
+	public User(long id, String nume_complet, String email, String rol) {
+		super();
+		this.id_utilizator = id;
+		this.nume_complet = nume_complet;
+		this.email = email;
+		this.rol = rol;
+	}
+
+
 
 	public User(String nume_complet, String email, String parola) {
 		super();
@@ -64,13 +80,16 @@ public class User {
 		this.parola = parola;
 	}
 
-	public int getId_rol() {
-		return id_rol;
+	public String getRol() {
+		return rol;
 	}
 
-	public void setId_rol(int id_rol) {
-		this.id_rol = id_rol;
+	public void setRol(String rol) {
+		this.rol = rol;
 	}
-	
+
+	public boolean isAdmin() {
+		return this.rol.equals("admin");
+	}
 	
 }

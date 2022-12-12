@@ -6,28 +6,27 @@
     <jsp:body>
     <div class="container flex-column">
     	<div class="table-heading">
-	    	<h2>Studenti</h2>
-			<a href="/studenti/new"><button class="btn submit-btn submit-btn-new">Adauga student</button></a>	
+	    	<h2>Utilizatori</h2>
     	</div>
         <table class="table shadow-depth">
         	<thead>
 	        	<tr>
 	        		<th>#</th>
-	        		<th>Nume</th>
-	        		<th>Prenume</th>
-	        		<th>Adresa</th>
+	        		<th>Nume complet</th>
+	        		<th>Email</th>
+	        		<th>Rol</th>
 	        	</tr>
         	</thead>
         	<tbody>
-        		<c:forEach items="${ students }" var="student" varStatus="loop">
+        		<c:forEach items="${ users }" var="user" varStatus="loop">
 	        		<tr>
 	        			<td class="font-weight-semiBold">${ loop.index + 1 }</td>
-	        			<td>${ student.nume }</td>
-	        			<td>${ student.prenume }</td>
-	        			<td>${ student.adresa }</td>
-	        			<td class="action-cell"><a href="/studenti/edit?id=${ student.id }"><button class="btn action-btn edit-btn">Edit</button></a></td>
+	        			<td>${ user.nume_complet }</td>
+	        			<td>${ user.email }</td>
+	        			<td>${ user.rol }</td>
+	        			<td class="action-cell"><a href="/utilizatori/edit?id=${ user.id_utilizator }"><button class="btn action-btn edit-btn">Edit</button></a></td>
     					<c:if test='${ auth_user.rol == "admin" }'>
-		        			<td class="action-cell"><a href="/studenti/delete?id=${ student.id }"><button class="btn action-btn delete-btn">X</button></a></td>
+		        			<td class="action-cell"><a href="/utilizatori/delete?id=${ user.id_utilizator }"><button class="btn action-btn delete-btn">X</button></a></td>
       					</c:if>
 	        		</tr>
         		</c:forEach>
