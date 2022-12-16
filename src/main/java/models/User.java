@@ -1,5 +1,7 @@
 package models;
 
+import utils.Hash;
+
 public class User {
 
 	private long id_utilizator;
@@ -90,6 +92,10 @@ public class User {
 
 	public boolean isAdmin() {
 		return this.rol.equals("admin");
+	}
+
+	public boolean checkPassword(String password) {
+		return this.parola.equals( password );
 	}
 	
 }

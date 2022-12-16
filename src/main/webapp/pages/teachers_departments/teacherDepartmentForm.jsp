@@ -10,7 +10,7 @@
     	    	
     	    	<c:choose>
 				    <c:when test="${teacher_department.teacher.id == null && teacher_department.department.id == null}">
-				        <h3 class="">Adauga un profesor la o cadera</h3>
+				        <h3 class="">Adauga un profesor la o catedra</h3>
 				    </c:when>
 				    <c:otherwise>
 				        <h3 class="">Editeaza relatia profesor-catedra</h3>

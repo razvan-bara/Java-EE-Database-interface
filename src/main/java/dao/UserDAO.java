@@ -11,7 +11,7 @@ import models.User;
 
 public class UserDAO extends DAO {
 
-	private String ATTEMPT_LOGIN_USER = "SELECT * FROM UTILIZATORI WHERE email = ? AND parola = ?";
+	private String ATTEMPT_LOGIN_USER = "SELECT * FROM UTILIZATORI WHERE email = ?";
 	private String SELECT_ALL_USERS_ACTIVE_OR_PENDING = "SELECT * FROM UTILIZATORI ORDER BY rol asc";
 	private String SELECT_ALL_PENDING_USERS = "SELECT * FROM UTILIZATORI ORDER BY id_utilizator asc";
 	private String INSERT_NEW_USER= "INSERT INTO UTILIZATORI(nume_complet,email,parola) VALUES(?,?,?)";
@@ -166,20 +166,25 @@ public class UserDAO extends DAO {
 			PreparedStatement statement = conn.prepareStatement(ATTEMPT_LOGIN_USER);
 			
 			statement.setString(1, email);
-			statement.setString(2, password);
 			
 			ResultSet rs = statement.executeQuery();
 			
 			if(rs.next()) {
 			
-				user = new User(
+				User attempted_user = new User(
 					rs.getLong("id_utilizator"),
 					rs.getString("nume_complet"),
 					rs.getString("email"),
+					rs.getString("parola"),
 					rs.getString("rol")
 				);
 				
+				if(attempted_user.checkPassword(password)) {
+					user = attempted_user;
+				}
+				
 			}
+			
 			
 		}catch(Exception e) {
 			e.printStackTrace();

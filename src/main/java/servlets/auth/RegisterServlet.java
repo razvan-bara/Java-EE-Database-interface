@@ -43,6 +43,7 @@ public class RegisterServlet extends HttpServlet {
 			return;
 		}
 		
+		password = Hash.hashPass(password);
 		User user = new User(full_name, email, password, rol);
 		String error_msg = authService.registerUser(user);
 		

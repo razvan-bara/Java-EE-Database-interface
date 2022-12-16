@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import models.User;
 import service.AuthService;
 import utils.AuthSessionHandler;
+import utils.Hash;
 import utils.SessionMessage;
 
 @WebServlet("/login")
@@ -32,6 +33,7 @@ public class LoginServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		
+		password = Hash.hashPass(password);
 		User user = authService.attemptLogin(email, password);
 		
 		String redirectTo = "";

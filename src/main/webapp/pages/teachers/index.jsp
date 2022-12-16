@@ -26,7 +26,7 @@
 	        			<td>${ teacher.prenume }</td>
 	        			<td>${ teacher.adresa }</td>
 	        			<td class="action-cell"><a href="/profesori/edit?id=${ teacher.id }"><button class="btn action-btn edit-btn">Edit</button></a></td>
-	        			<c:if test = '${ auth_user.rol == "admin" }'>
+	        			<c:if test = '${ auth_user.isAdmin() }'>
 		        			<td class="action-cell"><a href="/profesori/delete?id=${ teacher.id }"><button class="btn action-btn delete-btn">X</button></a></td>
 	        			</c:if>
 	        		</tr>

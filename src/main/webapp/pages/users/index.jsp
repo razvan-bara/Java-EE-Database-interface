@@ -25,9 +25,7 @@
 	        			<td>${ user.email }</td>
 	        			<td>${ user.rol }</td>
 	        			<td class="action-cell"><a href="/utilizatori/edit?id=${ user.id_utilizator }"><button class="btn action-btn edit-btn">Edit</button></a></td>
-    					<c:if test='${ auth_user.rol == "admin" }'>
-		        			<td class="action-cell"><a href="/utilizatori/delete?id=${ user.id_utilizator }"><button class="btn action-btn delete-btn">X</button></a></td>
-      					</c:if>
+	        			<td class="action-cell"><a href="/utilizatori/delete?id=${ user.id_utilizator }"><button class="btn action-btn delete-btn">X</button></a></td>
 	        		</tr>
         		</c:forEach>
         	</tbody>

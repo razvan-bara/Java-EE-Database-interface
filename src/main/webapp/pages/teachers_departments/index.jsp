@@ -32,7 +32,7 @@
 			        			<button class="btn action-btn edit-btn">Edit</button>
 		        			</a>
 	        			</td>
-	        			<c:if test='${ auth_user.rol == "admin" }'>
+	        			<c:if test='${ auth_user.isAdmin() }'>
 	        			<td class="action-cell">
 		        			<a href="/functii/delete?teacher_id=${ teacher_department.teacher.id }&department_id=${teacher_department.department.id}">
 			        			<button class="btn action-btn delete-btn">X</button>

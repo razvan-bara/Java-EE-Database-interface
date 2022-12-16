@@ -22,7 +22,7 @@
 	        			<td class="font-weight-semiBold">${ loop.index + 1 }</td>
 	        			<td>${ department.denumire }</td>
 	        			<td class="action-cell"><a href="/catedre/edit?id=${ department.id }"><button class="btn action-btn edit-btn">Edit</button></a></td>
-	        			<c:if test = '${user.rol == "admin"}' >
+	        			<c:if test = '${ auth_user.isAdmin() }' >
 	        				<td class="action-cell"><a href="/catedre/delete?id=${ department.id }"><button class="btn action-btn delete-btn">X</button></a></td>
 	        			</c:if>
 	        		</tr>
