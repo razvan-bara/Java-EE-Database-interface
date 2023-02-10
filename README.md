@@ -10,6 +10,8 @@ This project manages the tables Students, Teacher, Departments.
 
 Also it uses the MVC Paradigm with
 
-servlet classes -> controller
-jsp file -> view
-service + dao + model classes -> model
+> servlet classes -> controller
+
+> jsp file -> view
+
+> service + dao + model classes -> model
