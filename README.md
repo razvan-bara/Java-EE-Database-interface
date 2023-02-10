@@ -20,4 +20,4 @@ It also features an authentication/authorization features.
 Every user needs to register/login to the app. 
 
 Basic users can only perform read/create/update operations on the DB.
-Only admins can perfom the delete operation (full CRUD support) and managed the registered users. 
+Only admins can perfom the delete operation (full CRUD support) and manage the registered users. 
